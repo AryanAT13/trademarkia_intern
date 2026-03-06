@@ -9,9 +9,8 @@ DB_PATH = "./chroma_db"
 COLLECTION_NAME = "newsgroups_corpus"
 BATCH_SIZE = 256 
 
-# 1. Data Cleaning: We use scikit-learn's built-in remove parameter to strip 
-#    'headers', 'footers', and 'quotes'. If we retain headers, embeddings 
-#    will overfit to metadata (e.g., email routing, domains) rather than semantic content.
+# 1. Data Cleaning: We use scikit-learn's built-in remove parameter to strip headers', 'footers', and 'quotes'.
+#    If we retain headers, embeddings will overfit to metadata (e.g., email routing, domains) rather than semantic content.
 #    Quotes are removed to prevent heavy cross-contamination of text from replies.
 
 def prepare_and_embed_data():
@@ -38,9 +37,8 @@ def prepare_and_embed_data():
             
     print(f"Retained {len(cleaned_docs)} viable documents out of {len(docs)}.")
 
-    # 2. Embedding Model: 'all-MiniLM-L6-v2'. It is a highly optimized, lightweight 
-    #    sentence transformer. Given the ~20k document corpus, we need a model that 
-    #    balances semantic accuracy with fast local inference (no GPU required).
+    # 2. Embedding Model: 'all-MiniLM-L6-v2'. It is a highly optimized, lightweight sentence transformer. 
+    #    Given the ~20k document corpus, we need a model that balances semantic accuracy with fast local inference (no GPU required).
 
     print("Initializing embedding model (all-MiniLM-L6-v2)...")
     model = SentenceTransformer('all-MiniLM-L6-v2')
@@ -48,9 +46,8 @@ def prepare_and_embed_data():
     print("Setting up ChromaDB...")
     client = chromadb.PersistentClient(path=DB_PATH)
 
-    # 3. Vector Database: ChromaDB. It is a lightweight, serverless, and persistent 
-    #    local vector store. It perfectly fits the "lightweight system" requirement 
-    #    without needing external infrastructure like Postgres/pgvector.
+    # 3. Vector Database: ChromaDB. It is a lightweight, serverless, and persistent local vector store. 
+    #    It perfectly fits the "lightweight system" requirement without needing external infrastructure like Postgres/pgvector.
     
     try:
         client.delete_collection(name=COLLECTION_NAME)
