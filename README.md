@@ -1,4 +1,4 @@
-# Trademarkia - Semantic Search & Fuzzy Caching API
+# Semantic Search & Fuzzy Caching API
 
 A lightweight, high performance semantic search system built for the 20 Newsgroups dataset. This project implements vector embeddings, fuzzy clustering, and a custom cluster-aware semantic cache from first principles.
 
