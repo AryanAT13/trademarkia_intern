@@ -40,7 +40,7 @@ def prepare_and_embed_data():
     # 2. Embedding Model: 'all-MiniLM-L6-v2'. It is a highly optimized, lightweight sentence transformer. 
     #    Given the ~20k document corpus, we need a model that balances semantic accuracy with fast local inference (no GPU required).
 
-    print("Initializing embedding model (all-MiniLM-L6-v2)...")
+    print("Initializing embedding model (all-MiniLM-L6-v2)")
     model = SentenceTransformer('all-MiniLM-L6-v2')
 
     print("Setting up ChromaDB...")

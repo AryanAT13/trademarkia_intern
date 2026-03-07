@@ -23,7 +23,7 @@ def perform_clustering():
     #    We use PCA to compress to 50 dimensions, preserving variance while making GMM computationally viable and mathematically stable.
 
     
-    print(f"Extracted {embeddings.shape[0]} embeddings. Running PCA compression to 50 dimensions...")
+    print(f"Extracted {embeddings.shape[0]} embeddings. Running PCA compression to 50 dimensions")
     # PCA reduces noise and makes GMM exponentially faster and more stable
     pca = PCA(n_components=50, random_state=42)
     reduced_embeddings = pca.fit_transform(embeddings)
